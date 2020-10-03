@@ -41,11 +41,11 @@ CREATE TABLE `bus` (
 --
 
 INSERT INTO `bus` (`id`, `type`, `motor`, `brakes`, `concessionaire_id`) VALUES
-(1, 'Bi-articulado', 'Diesel', 'abs', 1),
-(2, 'articulado', 'Gas', 'abs', 1),
-(3, 'Semi-articulado', 'Electric', 'abs', 2),
-(4, 'Bi-articulado', 'Hybrid', 'abs', 1),
-(5, 'Bi-articulado', 'Electric', 'abs', 3);
+(1, 'Articulado', 'Diesel', 'abs', 1),
+(2, 'Bi-articulado', 'Gas', 'Pinzas Flotantes', 1),
+(3, 'Semi-articulado', 'Electric', 'Tambor', 2),
+(4, 'Bi-articulado', 'Hybrid', 'Tambor', 1),
+(5, 'Articulado', 'Hybrid', 'abs', 3);
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ INSERT INTO `concessionaire` (`id`, `name`) VALUES
 CREATE TABLE `device` (
   `id` int(11) NOT NULL,
   `ip` varchar(45) DEFAULT NULL,
-  `status` tinyint(4) DEFAULT NULL COMMENT '[NULL] Active\\n[1] Inactive',
+  `status` varchar(10) NOT NULL,
   `bus_id` int(11) NOT NULL,
   `device_type_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -86,9 +86,9 @@ CREATE TABLE `device` (
 --
 
 INSERT INTO `device` (`id`, `ip`, `status`, `bus_id`, `device_type_id`) VALUES
-(1, '123456', NULL, 1, 2),
-(2, '3216', 1, 4, 2),
-(3, NULL, NULL, 1, 2);
+(1, '190.162.0.0', 'ACTIVE', 1, 2),
+(2, '1.1.0.0', 'INACTIVE', 4, 2),
+(3, '192.168.0.1', 'ACTIVE', 1, 2);
 
 -- --------------------------------------------------------
 
